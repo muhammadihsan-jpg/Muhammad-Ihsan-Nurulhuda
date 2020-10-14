@@ -1,0 +1,54 @@
+title: "R Notebook"
+output: html_notebook
+---
+
+
+{r}
+library(ISLR)
+library(lsr)
+dataCredit <- Credit
+head(dataCredit)
+##soal stastistik
+#Compute the mean and the median of Rating, Cards, and Age
+mean(dataCredit$Rating)
+mean(dataCredit$Age)
+mean(dataCredit$Cards)
+median(dataCredit$Rating)
+median(dataCredit$Age)
+median(dataCredit$Cards)
+#nomor 2. Compute the mode of Gender, Student, and Married
+modeOf(dataCredit$Gender)
+modeOf(dataCredit$Student)
+modeOf(dataCredit$Married)
+#no. 3. Compute the sample 10, 37, and 91 percentiles of Education
+quantile(x = dataCredit$Education, probs = 0.1)
+quantile(x = dataCredit$Education, probs = 0.37)
+quantile(x = dataCredit$Education, probs = 0.91)
+#no. 4. Compute the quartiles of Balance and its corresponding boxplot
+quantile(x = dataCredit$Balance, c(0.25, 0.50, 0.75))
+boxplot(dataCredit$Balance, horizontal = TRUE)
+#no. 5. Compute the correlation and the scatter plot between pairs of Limit and Rating, Age and Card, Income and Education
+LimitxRating <- data.frame(limit = dataCredit$Limit, rating = dataCredit$Rating)
+LimitxRating
+AgexCards <- data.frame(age = dataCredit$Age, cards = dataCredit$Cards)
+AgexCards
+IncomexEdu <- data.frame(income = dataCredit$Income, education = dataCredit$Education)
+IncomexEdu
+plot(dataCredit$Limit, dataCredit$Rating)
+plot(dataCredit$Age, dataCredit$Cards)
+plot(dataCredit$Income, dataCredit$Education)
+###soal var. acak polinomial 
+#Untuk masuk ke kampus impiannya, Helmy mengikuti ujian sebanyak 7x dari berbagai jalur test dengan peluang masuknya adalah sebanyak 1/2. Jika X adalah berapa kali Helmy gagal pada test, maka berapa kemungkinan X=3 pada 10x ujian?
+dbinom(x = 3, size = 7, prob = 1/2)
+#mencari probabilitas kumulatif x=3
+pbinom(q = 3, size = 7, prob = 1/2)
+#mencari nilai persentil 50
+qbinom(p = 0.50, size = 7, prob = 1/2)
+#simulasi sampel 25 variabel acak
+rbinom(n = 25, size = 7, prob = 1/2)
+
+
+Disebuah desa terdapat 500 KK akan ada jatah sumbangan desa ada 50 kk kurang mampu,jika dibagikan sumbangan pada 5 KK secara acak,tentukan peluang terbaginya 2 KK yang mendapat jatah.
+
+{r}
+dbinom(x = 2, size = 5,prob =1/10 )
